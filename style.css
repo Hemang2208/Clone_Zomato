@@ -1,15 +1,18 @@
+/* Reset Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Body Styles */
 body {
-    font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
 }
 
+/* Header Styles */
 header {
     background-color: #c8102e;
     padding: 20px;
@@ -22,6 +25,7 @@ header .logo img {
     height: 50px;
 }
 
+/* Navigation Styles */
 ul {
     list-style-type: none;
     display: flex;
@@ -41,75 +45,84 @@ ul li a:hover {
     text-decoration: underline;
 }
 
+/* Main Section First Styles */
 main.first {
     text-align: center;
     padding: 40px 2px;
     background-image: url('https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png');
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     color: white;
-    min-height: calc(60vh - 70px);
 }
 
-
 main.first p {
-    margin-top: 25px;
+    margin: 25px 0 35px;
     font-size: 30px;
-    margin-bottom: 35px;
+}
+
+/* Input Styles */
+.location-input,
+.search-input {
+    padding: 12px;
+    font-size: 15px;
 }
 
 .location-input {
-    width: 250px;
-    font-size: 15px;
-    padding: 12px;
+    width: 200px;
 }
 
 .search-input {
-    width: 400px;
-    font-size: 15px;
-    padding: 12px;
-}  
+    width: 350px;
+}
 
+/* Main Section Second Styles */
 main.second {
-    text-align: center;
-    padding: 20px 2px;
-    background-color: white;
-}
-
-main.second .image-container {
     display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
 }
 
+/* Image Container Styles */
+.image-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5vw;
+}
+
+/* Image Item Styles */
 .image-item {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    width: calc(32% - 20px);
+    border-radius: 12px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    padding: 15px;
+    padding: 10px;
+    max-width: 220px;
     margin: 10px;
+    object-fit: fill;
 }
 
 .image-item img {
+    object-fit: contain;
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .image-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 6px 15px black;
 }
 
+/* Caption Styles */
 .caption {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
     margin: 10px 0 5px;
     color: #333;
@@ -120,12 +133,142 @@ main.second .image-container {
     margin: 0 0 10px;
 }
 
+/* Footer Styles */
 footer {
     background-color: #c8102e;
     color: white;
     text-align: center;
     padding: 15px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+    main.first p {
+        font-size: 22px;
+    }
+
+    .location-input,
+    .search-input {
+        width: 100%;
+    }
+
+    main.second {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    ul li {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    ul li a {
+        display: block;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header .logo img {
+        height: 40px;
+    }
+
+    main.first {
+        padding: 20px 2px;
+    }
+
+    ul {
+        padding: 0;
+        width: 100%;
+    }
+
+    ul li {
+        width: 100%;
+    }
+
+    ul li a {
+        padding: 8px 0;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    header {
+        padding: 5px;
+    }
+
+    header .logo img {
+        height: 35px;
+    }
+
+    main.first {
+        padding: 15px 5px;
+    }
+
+    .image-item {
+        padding: 5px;
+    }
+
+    ul {
+        width: 100%;
+    }
+
+    ul li {
+        width: 100%;
+    }
+
+    ul li a {
+        padding: 6px 0;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 375px) {
+    header {
+        padding: 8px;
+    }
+
+    header ul li {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .search-input {
+        width: 90%;
+    }
+
+    main.first p {
+        font-size: 16px;
+    }
+
+    ul li a {
+        padding: 8px 0;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 800px) {
+    header {
+        opacity: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
 }
