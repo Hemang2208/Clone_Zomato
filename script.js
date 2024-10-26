@@ -1,29 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Zomato Clone loaded.");
-    initSearchInput();
-    initMainContentAnimation();
+// Wait for the DOM to fully load
+document.addEventListener('DOMContentLoaded', function () {
+    const locationInput = document.querySelector('.location-input');
+    const searchInput = document.querySelector('.search-input');
+    const loader = document.getElementById('loader');
+    const percentageText = document.querySelector('.percentage');
+    const progressBar = document.querySelector('.progress-bar');
+
+    // Simulate loading effect
+    let loadProgress = 0;
+    const loadingInterval = setInterval(() => {
+        if (loadProgress < 100) {
+            loadProgress++;
+            percentageText.textContent = loadProgress + '%';
+            progressBar.style.width = loadProgress + '%'; // Correctly set width
+        } else {
+            clearInterval(loadingInterval);
+            loader.style.display = 'none'; // Hide loader after loading
+        }
+    }, 30); // Adjust time for speed of loading effect
+
+    // Add event listener to handle enter key for location input
+    locationInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            alert(`Searching for restaurants in ${locationInput.value}`);
+        }
+    });
+
+    // Add event listener to handle enter key for search input
+    searchInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            alert(`Searching for ${searchInput.value}`);
+        }
+    });
 });
-
-function initSearchInput() {
-    const searchInput = document.querySelector('input[type="text"]');
-
-    searchInput.addEventListener('focus', () => {
-        searchInput.style.boxShadow = '0 0 10px rgba(200, 16, 46, 0.5)';
-    });
-
-    searchInput.addEventListener('blur', () => {
-        searchInput.style.boxShadow = 'none';
-    });
-}
-
-function initMainContentAnimation() {
-    const mainContent = document.querySelector('main');
-    mainContent.style.opacity = '0';
-    mainContent.style.transform = 'translateY(20px)';
-
-    setTimeout(() => {
-        mainContent.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        mainContent.style.opacity = '1';
-        mainContent.style.transform = 'translateY(0)';
-    }, 100);
-}
